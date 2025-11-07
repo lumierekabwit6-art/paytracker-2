@@ -1,6 +1,6 @@
 // Updated google-sheets.js with better error handling
-const SPREADSHEET_ID = 'your_actual_spreadsheet_id_here';
-const API_KEY = 'your_actual_api_key_here';
+const SPREADSHEET_ID = '1yp9iX28R9FypmAEH4YEOoLRAtu-9kLy9ZrO0mayW6rI';
+const API_KEY = 'AIzaSyBX96y-wl7md2ivc-nDzZnpWK5mW-G19ic';
 const SHEET_NAME = 'PayTracker';
 
 // Load Google API client
@@ -143,3 +143,4 @@ window.loadFromGoogleSheets = async function() {
         return []; // Return empty array to trigger local storage fallback
     }
 };
+
