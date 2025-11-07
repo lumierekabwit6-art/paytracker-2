@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pay Tracker</h1>
+        </header>
+
+        <div class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>Add Work Entry</h2>
+                <form id="workForm">
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hoursWorked">Hours Worked:</label>
+                        <input type="number" id="hoursWorked" step="0.01" required>
+                    </div>
+                    
+                    <div class="rate-type">
+                        <label>Rate Type:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="hourlyRate" name="rateType" value="hourly" checked>
+                            <label for="hourlyRate">Hourly Rate</label>
+                            
+                            <input type="radio" id="dailyRate" name="rateType" value="daily">
+                            <label for="dailyRate">Daily Rate</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="hourlyRateGroup">
+                        <label for="hourlyRateInput">Hourly Rate ($):</label>
+                        <input type="number" id="hourlyRateInput" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group" id="dailyRateGroup" style="display: none;">
+                        <label for="dailyRateInput">Daily Rate ($):</label>
+                        <input type="number" id="dailyRateInput" step="0.01">
+                    </div>
+                    
+                    <button type="submit">Add Entry</button>
+                </form>
+                
+                <div id="calculatedPay" class="calculated-pay" style="display: none;">
+                    <h3>Calculated Pay: $<span id="payAmount">0.00</span></h3>
+                </div>
+            </section>
+
+            <!-- Data Display Section -->
+            <section class="data-section">
+                <div class="filter-section">
+                    <label for="monthFilter">Filter by Month:</label>
+                    <select id="monthFilter">
+                        <option value="">All Months</option>
+                    </select>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Hours</h3>
+                        <p id="totalHours">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Pay</h3>
+                        <p id="totalPay">$0.00</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Average Daily</h3>
+                        <p id="averagePay">$0.00</p>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table id="workTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Hours</th>
+                                <th>Rate Type</th>
+                                <th>Rate</th>
+                                <th>Pay</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <h2>Monthly Overview</h2>
+                <div class="chart-container">
+                    <canvas id="payChart"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="google-sheets.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
